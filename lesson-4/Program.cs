@@ -25,9 +25,9 @@ switch (userVar)
     case 4:
         les4_task4();
         break;  
-    // case 5:
-    //     les4_task5();
-    //     break; 
+    case 5:
+        les4_task5();
+        break; 
     // case 6:
     //     les4_task6();
     //     break; 
@@ -84,4 +84,24 @@ void les4_task4()
         if (i % 2 != 0) sum += array[i];
     }
     Console.WriteLine($"Сумма значений стоящих на нечетных позициях: {sum}");
+}
+
+//Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+void les4_task5()
+{
+    //Создание объекта для генерации чисел
+    Random rnd = new Random();
+    int [] array = new int[100];
+
+    //заполнение массива случайными трехзначными числами
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = rnd.Next(100, 999);
+    }
+
+    // вывод произведений пар чисел
+     for (int i = 0; i < array.Length/2; i++)
+    {
+        Console.WriteLine($"Сумма произведений {i+1}-ой пары чисел ({array[i]} и {array[array.Length - (i + 1)]}): {array[i] * array[array.Length - (i + 1)]}");
+    }
 }
