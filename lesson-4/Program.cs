@@ -109,23 +109,24 @@ void les4_task5()
 //В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом.
 void les4_task6()
 {
-    //Создание объекта для генерации чисел
-    Random rnd = new Random();
-    int [] array = new int[100];
-    int min = 0;
-    int max = 0;
+    Console.WriteLine("Введите вещественные числа через пробел");
+    // создаем переменную массива строк и в нее добавляем массив строк разделенных запятой
+    string[] stringArray = Console.ReadLine().Split(' ');
+    double [] array = new double[stringArray.Length];
+    double min = 0;
+    double max = 0;
 
-    //заполнение массива случайными трехзначными числами
-    for (int i = 0; i < array.Length; i++)
+    //заполняем массив ввещественных чисел со строкового массива 
+    for (int i = 0; i < stringArray.Length; i++)
     {
-        array[i] = rnd.Next(100, 999);
+        array[i] = double.Parse(stringArray[i].Trim());
     }
 
     min = array[0];
     max = array[0];
 
     // ищем минимальное и максимальное число в массиве
-     for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
         if (array[i] < min) min = array[i];
         else if (array[i] > max) max = array[i];
