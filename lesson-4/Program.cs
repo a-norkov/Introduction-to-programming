@@ -28,9 +28,9 @@ switch (userVar)
     case 5:
         les4_task5();
         break; 
-    // case 6:
-    //     les4_task6();
-    //     break; 
+    case 6:
+        les4_task6();
+        break; 
     default:
         Console.WriteLine("Введеное число не соответсвует возможным вариантам");
         break;
@@ -104,4 +104,32 @@ void les4_task5()
     {
         Console.WriteLine($"Сумма произведений {i+1}-ой пары чисел ({array[i]} и {array[array.Length - (i + 1)]}): {array[i] * array[array.Length - (i + 1)]}");
     }
+}
+
+//В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом.
+void les4_task6()
+{
+    //Создание объекта для генерации чисел
+    Random rnd = new Random();
+    int [] array = new int[100];
+    int min = 0;
+    int max = 0;
+
+    //заполнение массива случайными трехзначными числами
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = rnd.Next(100, 999);
+    }
+
+    min = array[0];
+    max = array[0];
+
+    // ищем минимальное и максимальное число в массиве
+     for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < min) min = array[i];
+        else if (array[i] > max) max = array[i];
+    }
+
+    Console.WriteLine($"Разность между максимальным и минимальным элементом равно {max - min}");
 }
