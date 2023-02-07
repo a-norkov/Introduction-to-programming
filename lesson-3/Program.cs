@@ -12,8 +12,7 @@ int userVar = int.Parse(Console.ReadLine());
 switch (userVar)
 {
     case 1:
-        string namee = "les3_task1"
-        ();
+        les3_task2();
         break;
     case 2:
         les3_task2();
