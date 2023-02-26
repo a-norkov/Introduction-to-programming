@@ -48,8 +48,7 @@ void les5_task1()
 
 // Написать программу масштабирования фигуры
 void les5_task2()
-{
-    //string[] temp = Console.ReadLine().Split(',');   
+{ 
     Console.WriteLine("Введите координаты вершин фигуры, пример (0.1, 0.2) (2,0) (2,2) (0,2), числа с плавающей точкой необходимо вводить через точку");
     string[] stringCoordinates = Console.ReadLine().Split(')');
     Console.WriteLine("Введеное k1:");
@@ -68,13 +67,23 @@ void les5_task2()
         arrayCoordinates[i, 1] = double.Parse(tempCoordinates[1].Replace('.',','));
 
         Console.Write ($"({arrayCoordinates[i, 0] * k}, {arrayCoordinates[i, 1] * k}) ");
-        //Console.WriteLine(arrayCoordinates[i, 1] * k);
     }
 }
 
 // Написать программу копирования массива.
 void les5_task3()
 {
+    Console.WriteLine("Введите символы для копирования:");
+    string originalArray = Console.ReadLine();
+    char[] copyArray = new char[originalArray.Length];
+    
+    Console.WriteLine("Копия массива:");
+
+    for (int i = 0; i < originalArray.Length; i++)
+    {
+        copyArray[i] = originalArray[i];
+        Console.Write ($"{copyArray[i]}");
+    }   
 
 
 }
