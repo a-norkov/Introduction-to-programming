@@ -87,7 +87,7 @@ void les7_task2()
         {
             for (int p = 0; p < numbers.GetLength(1) - 1; p++)
             {
-                if (numbers[i, p] > numbers[i, p + 1])
+                if (numbers[i, p] < numbers[i, p + 1])
                 {
                     tmp = numbers[i, p + 1];
                     numbers[i, p + 1] = numbers[i, p];
