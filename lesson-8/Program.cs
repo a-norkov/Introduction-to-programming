@@ -1,5 +1,5 @@
 ﻿// Seminar 8
-//Console.Clear();
+Console.Clear();
 Console.WriteLine("Выберите вариант задачи:\n\n" 
 + " 1 - Найти произведение двух матриц.\n" 
 + " 2 - В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.\n"
@@ -30,7 +30,6 @@ switch (userVar)
 //Найти произведение двух матриц.
 void les8_task1()
 {
-    Console.WriteLine("В данном примере матрицу K умножаем на матрицу L:");
     Console.WriteLine("Введите размерность m матрицы K:");
     int m1 = int.Parse(Console.ReadLine());
     Console.WriteLine("Введите размерность n матрицы K:");
@@ -94,7 +93,7 @@ void les8_task1()
             Console.Write("\n");
         }
 
-            //умножение матрицы
+    //умножение матрицы
         for (int i = 0; i < L.GetLength(0); i++)
         {
             for (int j = 0; j < K.GetLength(1); j++)
@@ -107,7 +106,6 @@ void les8_task1()
             
         }
 
-        // Console.Write("\n");
     }
 
     // вывод результата произведения матриц
@@ -130,7 +128,72 @@ void les8_task1()
 //В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 void les8_task2()
 {
+    Console.WriteLine("Введите размерность m:");
+    int m = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите размерность n:");
+    int n = int.Parse(Console.ReadLine());
 
+    double [,] array = new double[n, m];
+    double [ , ] minIndexElement = new double[1, 3];
+    double [,] cutArray = new double[n - 1, m - 1];
+    Random rnd = new Random();
+    int ii = 0;
+    int jj = 0;
+    // int counter = 0;
+
+    // заполнение массива случайными значениями и его вывод
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = rnd.NextDouble() + rnd.Next(1, 10);
+            Console.Write($"{array[i, j].ToString("0#.#0")} | ");
+
+            if (i == 0 & j == 0)
+            {
+                minIndexElement[0, 0] = array[i, j];
+                minIndexElement[0, 1] = i;
+                minIndexElement[0, 2] = j;
+            }
+
+            if (array[i, j] < minIndexElement[0, 0])
+            {
+                minIndexElement[0, 0] = array[i, j];
+                minIndexElement[0, 1] = i;
+                minIndexElement[0, 2] = j;
+            }
+        }
+
+        Console.Write("\n");
+    }
+    
+    Console.Write("\n");
+    Console.WriteLine($"Минимальный элемент массива: {minIndexElement[0, 0].ToString("0#.#0")}. строка: {minIndexElement[0, 1] + 1}, столбец: {minIndexElement[0, 2] + 1} \n");
+    //Console.WriteLine(minIndexElement[0, 1]);
+    //Console.WriteLine(minIndexElement[0, 2]);
+
+    // заполнение нового массива
+    Console.WriteLine("Массив с удаленными элементами:");
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+
+            if (minIndexElement[0, 1] != i & minIndexElement[0, 2] != j)
+            {
+                cutArray[ii, jj] = array [i, j];
+                Console.Write($"{cutArray[ii, jj].ToString("0#.#0")} | ");
+                jj += 1;
+            }
+
+        }
+        
+        if (minIndexElement[0, 1] != i) 
+        {
+            ii += 1; jj = 0; Console.Write("\n");
+        }
+    }
+    
 }
 
 //Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя 
