@@ -139,7 +139,6 @@ void les8_task2()
     Random rnd = new Random();
     int ii = 0;
     int jj = 0;
-    // int counter = 0;
 
     // заполнение массива случайными значениями и его вывод
     for (int i = 0; i < array.GetLength(0); i++)
@@ -169,8 +168,6 @@ void les8_task2()
     
     Console.Write("\n");
     Console.WriteLine($"Минимальный элемент массива: {minIndexElement[0, 0].ToString("0#.#0")}. строка: {minIndexElement[0, 1] + 1}, столбец: {minIndexElement[0, 2] + 1} \n");
-    //Console.WriteLine(minIndexElement[0, 1]);
-    //Console.WriteLine(minIndexElement[0, 2]);
 
     // заполнение нового массива
     Console.WriteLine("Массив с удаленными элементами:");
@@ -200,6 +197,45 @@ void les8_task2()
 //индексы соответствующего элемента.
 void les8_task3()
 {
+     Console.WriteLine("Внимание! Количество элементов не должно превышать 99:");
+    Console.WriteLine("Введите размерность m:");
+    int m = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите размерность n:");
+    int n = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите размерность c:");
+    int c = int.Parse(Console.ReadLine());
+    int counter = 0;
+    int [] arrayForCheck = new int [99];
+    int [ , , ] array = new int[n, m, c];
+    Random rnd = new Random();
+
+    // проверка массива на количество элементов
+    if (m * n * c > 99)
+    {
+        Console.WriteLine("Количество элементов в указанной размерности больше 99");
+    }
+
+    else
+    {
+        // заполнение массива и его вывод
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                for (int jj = 0; jj < array.GetLength(2); jj++)
+                {   
+                    array[i, j, jj] = rnd.Next(1, 99);
+                    Console.Write($"{array[i, j, jj].ToString("0#")} - индекс [{i}, {j}, {jj}] | ");
+                }
+
+                Console.Write("\n");
+            }
+
+        }
+    }
+
+
+
 
 }
 
