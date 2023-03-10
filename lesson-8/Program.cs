@@ -76,7 +76,6 @@ void les8_task1()
                 K[i, j] = rnd.Next(1, 10);
                 Console.Write($"{K[i, j].ToString("0#")} | ");
             }
-
             Console.Write("\n");
         }
 
@@ -85,11 +84,9 @@ void les8_task1()
         {
             for (int j = 0; j < L.GetLength(1); j++)
             {
-
                 L[i, j] = rnd.Next(1, 9);
                 Console.Write($"{L[i, j].ToString("0#")} | ");
             }
-
             Console.Write("\n");
         }
 
@@ -103,26 +100,20 @@ void les8_task1()
                     resultArray[i, j] += L[jj, j] * K[i, jj];
                 }
             }
-            
         }
-
-    }
 
     // вывод результата произведения матриц
-    Console.WriteLine ("Произведение матрицы K на L:");
-    for (int i = 0; i < resultArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < resultArray.GetLength(1); j++)
+        Console.WriteLine ("Произведение матрицы K на L:");
+        for (int i = 0; i < resultArray.GetLength(0); i++)
         {
-
-            K[i, j] = rnd.Next(1, 10);
-            Console.Write($"{resultArray[i, j].ToString("00#")} | ");
+            for (int j = 0; j < resultArray.GetLength(1); j++)
+            {
+                K[i, j] = rnd.Next(1, 10);
+                Console.Write($"{resultArray[i, j].ToString("00#")} | ");
+            }
+            Console.Write("\n");
         }
-
-        Console.Write("\n");
     }
-
-
 }
 
 //В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
@@ -147,14 +138,12 @@ void les8_task2()
         {
             array[i, j] = rnd.NextDouble() + rnd.Next(1, 10);
             Console.Write($"{array[i, j].ToString("0#.#0")} | ");
-
             if (i == 0 & j == 0)
             {
                 minIndexElement[0, 0] = array[i, j];
                 minIndexElement[0, 1] = i;
                 minIndexElement[0, 2] = j;
             }
-
             if (array[i, j] < minIndexElement[0, 0])
             {
                 minIndexElement[0, 0] = array[i, j];
@@ -162,7 +151,6 @@ void les8_task2()
                 minIndexElement[0, 2] = j;
             }
         }
-
         Console.Write("\n");
     }
     
@@ -184,13 +172,11 @@ void les8_task2()
             }
 
         }
-        
         if (minIndexElement[0, 1] != i) 
         {
             ii += 1; jj = 0; Console.Write("\n");
         }
     }
-    
 }
 
 //Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя 
@@ -204,38 +190,77 @@ void les8_task3()
     int n = int.Parse(Console.ReadLine());
     Console.WriteLine("Введите размерность c:");
     int c = int.Parse(Console.ReadLine());
-    int counter = 0;
+    int counter = m * n * c;
+    int tmp = new int();
+    int tmpA = new int();
+    int tmpB = new int();
+    int tmpC = new int();
+    int tmpAA = new int();
+    int tmpBB = new int();
+    int tmpCC = new int();
+
     int [] arrayForCheck = new int [99];
     int [ , , ] array = new int[n, m, c];
     Random rnd = new Random();
 
     // проверка массива на количество элементов
-    if (m * n * c > 99)
+    if (counter > 99)
     {
         Console.WriteLine("Количество элементов в указанной размерности больше 99");
+        Environment.Exit(0);
     }
 
     else
     {
-        // заполнение массива и его вывод
+        // заполнение массива числами по порядку его вывод
         for (int i = 0; i < array.GetLength(0); i++)
         {
             for (int j = 0; j < array.GetLength(1); j++)
             {
                 for (int jj = 0; jj < array.GetLength(2); jj++)
                 {   
-                    array[i, j, jj] = rnd.Next(1, 99);
+                    array[i, j, jj] = counter;
+                    counter --;
+                }
+            }
+        }
+
+        // перемешивание массива
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                for (int jj = 0; jj < array.GetLength(2); jj++)
+                {   
+                    tmpA = rnd.Next(0, array.GetLength(0));
+                    tmpB = rnd.Next(0, array.GetLength(1));
+                    tmpC = rnd.Next(0, array.GetLength(2));
+                    
+                    tmpAA = rnd.Next(0, array.GetLength(0));
+                    tmpBB = rnd.Next(0, array.GetLength(1));
+                    tmpCC = rnd.Next(0, array.GetLength(2));
+
+                    tmp = array[tmpA, tmpB, tmpC]; //rnd.Next(1, 99);
+                    array[tmpA, tmpB, tmpC] = array[tmpAA, tmpBB, tmpCC];
+                    array[tmpAA, tmpBB, tmpCC] = tmp;
+                }
+            }
+        }
+
+        // вывод массива
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                for (int jj = 0; jj < array.GetLength(2); jj++)
+                {   
                     Console.Write($"{array[i, j, jj].ToString("0#")} - индекс [{i}, {j}, {jj}] | ");
                 }
-
                 Console.Write("\n");
             }
-
         }
     }
-
-
-
 
 }
 
