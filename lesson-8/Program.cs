@@ -267,5 +267,54 @@ void les8_task3()
 //Показать треугольник Паскаля *Сделать вывод в виде равнобедренного треугольника
 void les8_task4()
 {
+    Console.WriteLine("Внимание! Количество строк не должно быть меньше 1:");
+    Console.WriteLine("Введите количество строк:");
+    int rowQuantity = int.Parse(Console.ReadLine());
+    int counter = 1;
+
+
+    int [ , ] array = new int[rowQuantity, rowQuantity * 2 + 1];
+
+    // заполняем вершину треугольнки (верхняя единица в массиве)
+    array[0, rowQuantity] = 1;
+
+    // проходим по массиву и заполняем его
+    for (int i = 1; i < array.GetLength(0); i++)
+    {
+
+        for (int j = rowQuantity - counter; j <= rowQuantity + counter; j++)
+        {
+            
+            if (array[i - 1, j - 1] > 0 || array[i - 1, j + 1] > 0 )
+            {
+                array[i, j] = array[i - 1, j - 1] + array[i - 1, j + 1] ;
+                // Console.Write($"{array[i, j]}  ");
+            }
+
+        }
+        counter ++;
+        // Console.Write("\n");
+    }
+
+    // вывод массива
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] == 0)
+            {
+                Console.Write("    ");
+            }
+            else
+            {
+                Console.Write($"{array[i, j].ToString("000#")} ");
+            }
+            
+        }
+        Console.Write("\n");
+    }
+    
+
 
 }
