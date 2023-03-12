@@ -150,5 +150,38 @@ void les9_task5()
 //Первые два элемента последовательности задаются пользователем.
 void les9_task6()
 {
+    Console.WriteLine("Введите последовательность из двух первых чисел:");
+    Console.WriteLine("Введите первое число:");
+    int a = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите второе число:");
+    int b = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите количество чисел для вывода:");
+    int n = int.Parse(Console.ReadLine());
+
+
+
+    Console.WriteLine($"Последовательно чисел, каждое следующее из которых равно сумме двух предыдущих:");
+    Console.Write($"{a} ");
+
+    showNumbers(a, b, n);
+
+    void showNumbers (int a, int b, int n)
+    {
+        Console.Write ($"{b} ");
+
+        if (n == 0)
+        {
+            return;
+        }
+
+        else 
+        {
+            int tmp = a;
+            a = b;
+            b += tmp;
+            showNumbers(a, b, n - 1);
+        }
+
+    }
 
 }
