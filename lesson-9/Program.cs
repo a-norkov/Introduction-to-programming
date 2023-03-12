@@ -27,7 +27,7 @@ switch (userVar)
     case 5:
         les9_task5();
         break;
-    case 5:
+    case 6:
         les9_task6();
         break;
     default:
@@ -44,12 +44,54 @@ void les9_task1()
 //Найти сумму элементов от M до N, N и M заданы.
 void les9_task2()
 {
+    Console.WriteLine("Введите число M:");
+    int m = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите число N:");
+    int n = int.Parse(Console.ReadLine());
 
+    Console.WriteLine($"Сумма элементов от {m} до {n} : {numberSumElement(m, n)}");
+
+    int numberSumElement (int a, int b)
+    {
+        if (a < b)
+        {
+            return b + numberSumElement(a, b - 1);
+        }
+
+        else if (a > b)
+        {
+            return b + numberSumElement(a, b + 1);
+        }
+
+        else 
+        {
+            return a;
+        }
+
+    }
 }
 
 //Найти сумму цифр числа.
 void les9_task3()
 {
+    Console.WriteLine("Введите число:");
+    int number = int.Parse(Console.ReadLine());
+    int sum = new int();
+
+    Console.WriteLine($"Сумма чисел равна: {numberSum(number)}");
+
+    int numberSum (int number)
+    {
+        if (number == 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return numberSum(number/10) + number%10;
+        }
+    }
+
 
 }
 
