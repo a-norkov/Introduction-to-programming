@@ -104,6 +104,22 @@ void les9_task4()
 //Написать программу возведения числа А в целую стень B.
 void les9_task5()
 {
+    Console.WriteLine("Введите число:");
+    int number = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите степень числа:");
+    int pow = int.Parse(Console.ReadLine());
+
+    Console.WriteLine($"Число {number} в степени {pow} : {numberSquare(number, pow)}");
+
+    int numberSquare (int a, int b)
+    {
+        if (b > 0)
+        {
+            return a * numberSquare(a, b - 1);
+        } 
+        else
+            return 1;
+    }
 
 }
 
