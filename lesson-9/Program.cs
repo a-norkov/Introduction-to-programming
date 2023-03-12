@@ -38,6 +38,29 @@ switch (userVar)
 //Показать натуральные числа от M до N, N и M заданы.
 void les9_task1()
 {
+    Console.WriteLine("Введите число M:");
+    int m = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите число N:");
+    int n = int.Parse(Console.ReadLine()) + 1;
+
+
+    Console.WriteLine($"Натуральные числа от {m} до {n}:");
+    showNumbers(m, n);
+
+    void showNumbers (int a, int b)
+    {
+        if (a == b)
+        {
+            return;
+        }
+
+        else 
+        {
+            showNumbers(a, (b - 1));
+            Console.WriteLine (b - 1);
+        }
+
+    }
 
 }
 
